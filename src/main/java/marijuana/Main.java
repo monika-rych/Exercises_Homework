@@ -1,39 +1,27 @@
 package marijuana;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         StateImporter stateImporter = new StateImporter("src/main/resources/marijuana-street-price-clean.csv");
         List<State> states = stateImporter.readStates();
-//        AverageBestStatePrice averageBestStatePrice = new AverageBestStatePrice();
-//        averageBestStatePrice.average(new ArrayList<BigDecimal>(), RoundingMode.HALF_UP);
-        List<BigDecimal> mean = new LinkedList<>();
+        CurrentStateDataProvider currentStateDataProvider = new CurrentStateDataProvider();
+        List<State> currentStateData = currentStateDataProvider.get(states);
 
-//       System.out.println(averageBestStatePrice);
+        System.out.println("--------");
+        currentStateData.stream()
+                .sorted(new AveragePriceComparator())
+                .limit(1)
+                .forEach(System.out::println);
+        System.out.println("--------");
 
-        states.stream()
+        System.out.println("--------");
+        currentStateData.stream()
                 .sorted(new ByHighestQualityWeedPriceStateComparator())
-                .limit(3)
+                .limit(5)
                 .forEach(System.out::println);
+        System.out.println("--------");
 
-        states.stream()
-                .sorted(new ByMediumQualityWeedPriceStateComparator())
-                .limit(3)
-                .forEach(System.out::println);
-
-        states.stream()
-                .sorted(new ByLowestQualityWeedPriceStateComparator())
-                .limit(3)
-                .forEach(System.out::println);
-
-       /* states.stream()
-                .sorted(new AverageBestStatePrice())*/
-
-        //System.out.println(states);
     }
 }

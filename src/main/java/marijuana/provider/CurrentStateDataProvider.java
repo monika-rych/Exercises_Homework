@@ -1,4 +1,6 @@
-package marijuana;
+package marijuana.provider;
+
+import marijuana.State;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -6,10 +8,10 @@ import java.util.stream.Collectors;
 public class CurrentStateDataProvider {
     public List<State> get(List<State> states){
         return states.stream()
-                .collect(Collectors.groupingBy( // collect companies by grouping
-                        State::getStateName, //group by sector
-                        Collectors.maxBy( // choose 'max' company in each sector
-                                Comparator.comparing(State::getData) // use 'ebitda' to compare companies
+                .collect(Collectors.groupingBy(
+                        State::getStateName,
+                        Collectors.maxBy(
+                                Comparator.comparing(State::getData)
                         )
                 ))
                 .values()

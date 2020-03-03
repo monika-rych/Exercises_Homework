@@ -1,4 +1,6 @@
-package marijuana;
+package marijuana.comparators;
+
+import marijuana.State;
 
 import java.util.Comparator;
 

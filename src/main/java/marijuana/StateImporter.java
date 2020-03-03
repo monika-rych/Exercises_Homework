@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class StateImporter {
+public class StateImporter  {
     private static final StateMapper STATE_MAPPER = new StateMapper();
     private final String pathToFile;
 

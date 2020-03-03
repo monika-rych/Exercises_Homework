@@ -20,14 +20,23 @@ public class State {
     private BigDecimal lowQualityWeedPrice;
     private LocalDate data;
 
-
     public BigDecimal averagePrice(){
         BigDecimal sum = highQualityWeedPrice.add(mediumQualityWeedPrice).add(lowQualityWeedPrice);
         BigDecimal mean = sum.divide(new BigDecimal(3), RoundingMode.HALF_UP);
         return mean;
     }
 
-    // nie rob compareto w tej klasie z porownaniem sredniej, to nie ma sensu wielkiego,
-    // bo pozniej bedziesz cgciala porownywac wg innych kryteriow
-    // dlatego te osobne komparatory sa lepsze
+    public BigDecimal lowestPrice(){
+        if (highQualityWeedPrice.compareTo(mediumQualityWeedPrice) <= 0 && highQualityWeedPrice.compareTo(lowQualityWeedPrice) <= 0){
+            return highQualityWeedPrice;
+        }
+        if (mediumQualityWeedPrice.compareTo(lowQualityWeedPrice) < 0){
+            return mediumQualityWeedPrice;
+        }
+        return lowQualityWeedPrice;
+    }
+   /* public LocalDate youngestRecord(){
+
+    }*/
+
 }

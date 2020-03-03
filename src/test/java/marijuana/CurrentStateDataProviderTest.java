@@ -1,5 +1,6 @@
 package marijuana;
 
+import marijuana.provider.CurrentStateDataProvider;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

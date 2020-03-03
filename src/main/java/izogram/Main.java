@@ -7,8 +7,8 @@ public class Main {
     public static void main(String[] args) {
 
         String line = "Tata";
-        Map<Character, Integer> mapa = new HashMap<>();
 
+        Map<Character, Integer> mapa = new HashMap<>();
         for (int i = 0; i < line.length(); ++i) {
             char literka = line.toLowerCase().charAt(i);
             if (!mapa.containsKey(literka)) {

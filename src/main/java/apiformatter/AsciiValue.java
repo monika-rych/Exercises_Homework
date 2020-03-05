@@ -6,9 +6,7 @@ public class AsciiValue implements WordValueProvider {
     public int get(String text) {
         int sum = 0;
         for (int i = 0; i < text.length(); i++) {
-            char ch = text.charAt(i);
-            int asciiValue = ch;
-            sum = sum + asciiValue;
+            sum += text.charAt(i);
         }
         return sum;
     }

@@ -1,8 +1,5 @@
 package api;
 
-
-import java.util.Scanner;
-
 class CharToAsciiCodeExample {
     public static void main(String[] args) {
         /*
@@ -11,12 +8,8 @@ class CharToAsciiCodeExample {
          scanner.close();*/
         String text = "aaa";
         int sum = 0;
-
-
         for (int i = 0; i < text.length(); i++) {
-            char ch = text.charAt(i);
-            int asciiValue = ch;
-            sum = sum + asciiValue;
+            sum += text.charAt(i);
         }
         System.out.println("ASCII sum: " + sum);
     }

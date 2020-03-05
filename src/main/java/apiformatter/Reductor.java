@@ -2,8 +2,10 @@ package apiformatter;
 
 import java.util.function.IntBinaryOperator;
 
-public class Reductor {
-    public IntBinaryOperator getReductor() {
-        return (x, y) -> x + y;
+public class Reductor implements IntBinaryOperator {
+
+    @Override
+    public int applyAsInt(int left, int right) {
+        return left + right;
     }
 }

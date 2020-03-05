@@ -1,47 +1,20 @@
 package fileManagier;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-
-import java.io.*;
+import java.io.FileReader;
+import java.io.IOException;
 public class FileManager {
 
     private String filePath;
-   // private BufferedWriter bufferedWriter;
-    private BufferedReader bufferedReader;
 
     public FileManager(String filePath) {
         this.filePath = filePath;
     }
 
-    public void initReader(){
-        try {
-            // decorator
-            bufferedReader = new BufferedReader(new FileReader(filePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public String readSentence() {
-        String sentence = "";
-        try {
-            sentence = bufferedReader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return sentence;
-    }
-    public void closeBufferedReader() {
-        try {
-            bufferedReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     public String readWholeFile() {
         StringBuilder builder = new StringBuilder();
 
-        try {
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
             String currentLine = bufferedReader.readLine();
             while (currentLine != null) {
                 builder.append(currentLine);

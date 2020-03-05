@@ -1,7 +1,5 @@
 package fileManagier;
 
-import fileManagier.FileManager;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,10 +8,8 @@ public class Main {
 
         String filePath = "C:/MojFolder2/brackets.txt";
         FileManager fileManager = new FileManager(filePath);
-        fileManager.initReader();
 
         String fileText = fileManager.readWholeFile();
-        fileManager.closeBufferedReader();
         System.out.println(fileText);
 
         String naszeWyrazenieRegularne = "[^a-zA-Z]";
@@ -25,13 +21,4 @@ public class Main {
 
     }
 
-    private static void checkStringBuilder(int numberOfStringsToAdd) {
-
-
-        StringBuilder sB = new StringBuilder();
-        for (int i = 0; i < numberOfStringsToAdd; i++) {
-            sB.append(" ").append(i).append("Programowanie jest super");
-        }
-
-    }
 }
